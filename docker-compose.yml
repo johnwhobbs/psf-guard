@@ -6,6 +6,7 @@ services:
     volumes:
       - /share/Container/psf-guard/data/nas-repo.sqlite:/data/nas-repo.sqlite
       - /share/Astrophotography/Repository:/images:ro
+      - /share/Container/psf-guard/auth:/home/psfguard/.config/psf-guard
     environment:
       - PUID=1000
       - PGID=1000
