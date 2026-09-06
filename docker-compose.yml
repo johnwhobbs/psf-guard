@@ -3,7 +3,7 @@ services:
     image: ghcr.io/theatrus/psf-guard:latest
     container_name: psf-guard
     volumes:
-      - /share/Container/psf-guard/data:/data/database.sqlite
+      - /share/Container/psf-guard/data:/data/database.sqlite:ro
       - /share/Astrophotography/Repository:/images:ro
     ports:
       - "7777:7777"
@@ -12,7 +12,7 @@ services:
     environment:
       - RUST_LOG=info
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/projects"]
+      test: ["CMD", "curl", "-f", "http://localhost:7777/api/projects"]
       interval: 30s
       timeout: 10s
       retries: 3
