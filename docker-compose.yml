@@ -6,7 +6,7 @@ services:
       - /share/Container/psf-guard/data:/data/database.sqlite
       - /share/Astrophotography/Repository:/images:ro
     ports:
-      - "3000:3000"
+      - "7777:7777"
     command: server /data/database.sqlite /images
     restart: unless-stopped
     environment:
