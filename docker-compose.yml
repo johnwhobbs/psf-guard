@@ -12,7 +12,7 @@ services:
       - RUST_LOG=info
     ports:
       - 3000:3000
-    command: server /data/nas-repo.sqlite /images
+    command: 'server /data/nas-repo.sqlite /images'
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/projects"]
