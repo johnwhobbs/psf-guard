@@ -8,7 +8,7 @@ services:
       - TZ=America/Denver
     volumes:
       - /share/Container/psf-guard/data:/data/database.sqlite
-      - /share/Astrophotography/repository:/images:ro
+      - /share/Astrophotography/Repository:/images:ro
     ports:
       - 3000:3000
     restart: unless-stopped
