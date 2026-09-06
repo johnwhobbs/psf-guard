@@ -2,6 +2,7 @@ services:
   psf-guard:
     image: ghcr.io/theatrus/psf-guard:latest
     container_name: psf-guard
+    working_dir: /data
     volumes:
       - /share/Container/psf-guard/data/nas-repo.sqlite:/data/nas-repo.sqlite
       - /share/Astrophotography/Repository:/images:ro
