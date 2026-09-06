@@ -1,0 +1,14 @@
+services:
+  psf-guard:
+    image: ghcr.io/theatrus/psf-guard:latest
+    container_name: psf-guard
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Denver
+    volumes:
+      - /share/Container/psf-guard/data:/data/database.sqlite
+      - /share/Astrophotography/repository:/images:ro
+    ports:
+      - 3000:3000
+    restart: unless-stopped
