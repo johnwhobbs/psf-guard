@@ -9,12 +9,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Denver
+      - RUST_LOG=info
     ports:
       - 3000:3000
     command: server /data/nas-repo.sqlite /images
     restart: unless-stopped
-    environment:
-      - RUST_LOG=info
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/projects"]
       interval: 30s
