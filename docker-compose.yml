@@ -17,7 +17,7 @@ services:
     command: server /data/nas-repo.sqlite /images --allow-database-management
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://192.168.3.2:3000/api/projects"]
+      test: ["CMD", "curl", "-f", "http://192.168.3.2:3000/"]
       interval: 30s
       timeout: 10s
       retries: 3
