@@ -18,7 +18,8 @@ services:
       - SEIZA_CATALOG_DIR=/catalogs
     ports:
       - 3000:3000
-    command: server /data/nas-repo.sqlite /images --allow-database-management
+    command: server --config /data/config.toml /data/nas-repo.sqlite /images --allow-database-management
+    #command: server /data/nas-repo.sqlite /images --allow-database-management
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://192.168.3.2:3000/"]
