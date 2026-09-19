@@ -8,8 +8,8 @@ services:
       - /share/Astrophotography/Repository:/images:ro
       - /share/Container/psf-guard/auth:/home/psfguard/.config/psf-guard
       - /share/Container/psf-guard/catalogs:/catalogs:ro
-      #- /share/Container/psf-guard/cache:/data/cache
-      #- /share/Container/psf-guard/config.toml:/data/config.toml:ro
+      - /share/Container/psf-guard/cache:/data/cache
+      - /share/Container/psf-guard/config.toml:/data/config.toml:ro
     environment:
       - PUID=1000
       - PGID=1000
@@ -18,8 +18,8 @@ services:
       - SEIZA_CATALOG_DIR=/catalogs
     ports:
       - 3000:3000
-    #command: server --config /data/config.toml /data/nas-repo.sqlite /images --allow-database-management
-    command: server /data/nas-repo.sqlite /images --allow-database-management
+    command: server --config /data/config.toml /data/nas-repo.sqlite /images --allow-database-management
+    #command: server /data/nas-repo.sqlite /images --allow-database-management
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://192.168.3.2:3000/"]
