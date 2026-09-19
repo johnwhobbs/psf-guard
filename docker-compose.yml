@@ -13,7 +13,7 @@ services:
       - PGID=1000
       - TZ=America/Denver
       - RUST_LOG=info
-      #- SEIZA_CATALOG_DIR=/catalogs
+      - SEIZA_CATALOG_DIR=/catalogs
     ports:
       - 3000:3000
     command: server /data/nas-repo.sqlite /images --allow-database-management
