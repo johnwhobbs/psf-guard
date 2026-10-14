@@ -4,14 +4,15 @@ services:
     container_name: psf-guard
     working_dir: /data
     volumes:
-      - /share/Container/psf-guard/data/nas-repo.sqlite:/data/nas-repo.sqlite
-      #- /share/Container/psf-guard/data/nina-sync.sqlite:/data/nina-sync.sqlite
+      - /share/Container/psf-guard/data:/data
+      # - /share/Container/psf-guard/data/nas-repo.sqlite:/data/nas-repo.sqlite
+      ##- /share/Container/psf-guard/data/nina-sync.sqlite:/data/nina-sync.sqlite
       - /share/Astrophotography/Repository:/images:ro
       - /share/Astrophotography/InProgress:/images-live
-      - /share/Container/psf-guard/auth:/home/psfguard/.config/psf-guard
+      # - /share/Container/psf-guard/auth:/home/psfguard/.config/psf-guard
       - /share/Container/psf-guard/catalogs:/catalogs
-      - /share/Container/psf-guard/cache:/data/cache
-      - /share/Container/psf-guard/config.toml:/data/config.toml:ro
+      # - /share/Container/psf-guard/cache:/data/cache
+      - /share/Container/psf-guard/data/psf-guard.toml:/config/psf-guard.toml:ro
     environment:
       - PUID=1000
       - PGID=1000
@@ -20,7 +21,7 @@ services:
       - SEIZA_CATALOG_DIR=/catalogs
     ports:
       - 3000:3000
-    command: server --config /data/config.toml /data/nas-repo.sqlite /images --allow-database-management --allow-anonymous-access
+    command: server --config /data/config.toml /data/nas-repo.sqlite /images --allow-database-management #--allow-anonymous-access
     #command: server /data/nas-repo.sqlite /images --allow-database-management
     restart: unless-stopped
     healthcheck:
